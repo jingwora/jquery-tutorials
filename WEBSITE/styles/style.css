@@ -67,3 +67,11 @@ main {
 .article_image {
     text-align: center;
 }
+
+.table_of_content_title, #intro {
+    opacity:0;
+}
+
+.table_of_content_title.animate__animated, #intro.animate__animated {
+    opacity:1;
+}
