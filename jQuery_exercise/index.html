@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Starter</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Header 1</h1>
+  <p>Paragraph 1</p>
+  <p class="second">Paragraph 2</p>
+  <p id="third">Paragraph 3</p>
+
+  <button id="btn_hide">hide</button>
+  <button id="btn_toggle">toggle</button>
+  <button id="btn_fadeout">fade</button>
+  <button id="btn_slide">slide</button>
+
+  <hr>
+
+  <div class="box">Text in box</div>
+  <br>
+  <button id="btn_animate">animate</button>
+
+  <hr>
+  <p class="text">text</p>
+  <button id="btn_text">text</button>
+
+  <hr>
+  <p class="html"><b>html</b></p>
+  <button id="btn_html" value="VAL" type="submit">html</button>
+
+  <hr>
+  <p class="class">class</p>
+  <button id="btn_class">class</button>
+
+  <hr>
+  <p class="box">css</p>
+  <p class="css1">css</p>
+  <p class="css2">css</p>
+  <button id="btn_css">css</button>
+
+  <hr>
+  <form id="registration_form" action="/submit-your-form-endpoint" method="post">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <br>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <br>
+    <fieldset>
+      <legend>Gender</legend>
+      <label>
+        <input type="radio" name="gender" value="female"> Female
+      </label>
+      <label>
+        <input type="radio" name="gender" value="male"> Male
+      </label>
+    </fieldset>
+    <br>
+    <div>
+      <button type="submit">Submit Form</button>
+    </div>
+  </form>
+
+  <hr>
+
+  <div id="output1">output1</div> <br>
+  <button id="btn_ajax1">ajax1</button>
+  <button id="btn_ajax2">ajax2</button>
+
+  <hr>
+  <div id="output2">output2</div> <br>
+
+  <button id="btn_get">get</button>
+  <button id="btn_post">post</button>
+
+  <br><br>
+
+  <!-- <script src="jQuery.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

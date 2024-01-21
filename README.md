@@ -46,7 +46,25 @@ The primary features of jQuery include:
 | `(selector)` | Define the element     | `("p")`   |
 | `.action()`  | Action                 | `.hide()` |
 
-### Selectors
+## Best practise
+
+- Running functions after "document ready" ensures that the web page has fully loaded, preventing issues with manipulating elements before they exist in the DOM.
+
+```
+$(document).read(function() {
+
+})
+```
+
+or
+
+```
+$(function() {
+
+})
+```
+
+## Selectors
 
 Selectors are powerful expressions used to identify and target specific HTML elements within a web page, enabling developers to manipulate, style, or interact with those elements using jQuery.
 
@@ -139,28 +157,6 @@ DOM (Document Object Model) manipulation in web development involves dynamically
 ### CSS Manipulation
 
 CSS manipulation actions in jQuery allow you to dynamically change the style and appearance of HTML elements on a web page, enhancing their visual presentation and interactivity.
-
-| Action           | Description                                                           | Example Usage                                                  |
-| ---------------- | --------------------------------------------------------------------- | -------------------------------------------------------------- |
-| `.css()`         | Gets or sets style properties for the selected elements               | `$(element).css("color")` or `$(element).css("color", "blue")` |
-| `.addClass()`    | Adds one or more classes to the selected elements                     | `$(element).addClass("newClass")`                              |
-| `.removeClass()` | Removes one or more classes from the selected elements                | `$(element).removeClass("oldClass")`                           |
-| `.toggleClass()` | Toggles one or more classes for the selected elements                 | `$(element).toggleClass("toggleClass")`                        |
-| `.hasClass()`    | Checks whether the selected elements have a specified class           | `$(element).hasClass("checkClass")`                            |
-| `.height()`      | Gets or sets the height of the selected element                       | `$(element).height()` or `$(element).height(100)`              |
-| `.width()`       | Gets or sets the width of the selected element                        | `$(element).width()` or `$(element).width(100)`                |
-| `.show()`        | Displays the selected elements                                        | `$(element).show()`                                            |
-| `.hide()`        | Hides the selected elements                                           | `$(element).hide()`                                            |
-| `.toggle()`      | Toggles the visibility of the selected elements                       | `$(element).toggle()`                                          |
-| `.slideDown()`   | Displays the selected elements with a sliding motion                  | `$(element).slideDown()`                                       |
-| `.slideUp()`     | Hides the selected elements with a sliding motion                     | `$(element).slideUp()`                                         |
-| `.slideToggle()` | Toggles the visibility of the selected elements with a sliding motion | `$(element).slideToggle()`                                     |
-| `.fadeIn()`      | Fades in the selected hidden elements                                 | `$(element).fadeIn()`                                          |
-| `.fadeOut()`     | Fades out the selected visible elements                               | `$(element).fadeOut()`                                         |
-| `.fadeToggle()`  | Toggles between the fadeIn() and fadeOut() methods                    | `$(element).fadeToggle()`                                      |
-| `.fadeTo()`      | Fades the selected elements to a given opacity                        | `$(element).fadeTo("slow", 0.5)`                               |
-
-### CSS manipulation action
 
 | Category           | Actions                                                                                                  | Description                                      | Example Usage                                                 |
 | ------------------ | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------- |
@@ -270,6 +266,8 @@ These actions provide a wide range of options for adding effects and animations 
 ### AJAX actions
 
 These actions provide a powerful way to interact with server-side data and services asynchronously, making your web applications more responsive and dynamic.
+
+Loading data in the background and display it on the webpage, without reloading the whole page.
 
 | Action             | Description                                                                                              | Example Usage                                                                                                                                                  |
 | ------------------ | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -409,3 +407,57 @@ These filtering actions allow you to select, exclude, and manipulate elements wi
 | `.add()`      | Add elements to the set of matched elements based on a selector, element, or jQuery object.               | `$(".elements").add(".additionalElements");`                           |
 | `.end()`      | End the most recent filtering operation and return to the previous set of elements.                       | `$(".elements").filter(".firstFilter").end().filter(".secondFilter");` |
 | `.addBack()`  | Add the previous set of elements back to the current set.                                                 | `$(".elements").filter(".firstFilter").next().addBack();`              |
+
+## Events
+
+Events in jQuery are triggers that execute specified JavaScript functions in response to user interactions or browser manipulations, such as clicks, keypresses, or document loading.
+
+### Mouse Events
+
+These events are triggered by actions of the computer mouse or similar pointing devices.
+
+| Mouse Event  | Description                                                  | Example Usage                                                              |
+| ------------ | ------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| `click`      | Triggered when an element is clicked.                        | `$("#button").click(function() { alert('Clicked!'); });`                   |
+| `dblclick`   | Triggered when an element is double-clicked.                 | `$("#item").dblclick(function() { alert('Double clicked!'); });`           |
+| `mouseenter` | Fired when the mouse pointer enters the area of an element.  | `$("#menu").mouseenter(function() { $(this).addClass('highlight'); });`    |
+| `mouseleave` | Fired when the mouse pointer leaves the area of an element.  | `$("#menu").mouseleave(function() { $(this).removeClass('highlight'); });` |
+| `mousemove`  | Triggered when the mouse moves within an element.            | `$("#track").mousemove(function() { console.log('Mouse is moving!'); });`  |
+| `mousedown`  | Triggered when a mouse button is pressed down on an element. | `$("#drag").mousedown(function() { console.log('Mouse down!'); });`        |
+| `mouseup`    | Triggered when a mouse button is released over an element.   | `$("#drag").mouseup(function() { console.log('Mouse up!'); });`            |
+| `hover`      | Combines both `mouseenter` and `mouseleave` events.          | `$("#menu-item").hover(function() { $(this).toggleClass('hovered'); });`   |
+
+### Keyboard Events
+
+These events are triggered by actions of the keyboard.
+
+| Keyboard Event | Description                                                                                                         | Example Usage                                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `keydown`      | Triggered when a key is pressed down.                                                                               | `$(document).keydown(function(event) { alert(event.which); });`                       |
+| `keyup`        | Triggered when a key is released.                                                                                   | `$(document).keyup(function(event) { alert(event.which); });`                         |
+| `keypress`     | Triggered when a key is pressed down and that key normally produces a character value (deprecated in jQuery 3.3.0). | `$(document).keypress(function(event) { alert(String.fromCharCode(event.which)); });` |
+
+### Form Events
+
+These events are triggered by interactions with form elements.
+
+| Form Event | Description                                                        | Example Usage                                                                              |
+| ---------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `submit`   | Triggered when a form is submitted.                                | `$("form").submit(function(event) { event.preventDefault(); alert('Form submitted!'); });` |
+| `change`   | Triggered when the value of an input, select, or textarea changes. | `$("input").change(function() { alert('Value changed!'); });`                              |
+| `focus`    | Triggered when an element gains focus.                             | `$("input").focus(function() { $(this).addClass('focus'); });`                             |
+| `blur`     | Triggered when an element loses focus.                             | `$("input").blur(function() { $(this).removeClass('focus'); });`                           |
+| `focusin`  | Similar to `focus`, but bubbles up through the DOM tree.           | `$("form").focusin(function() { $(this).addClass('focus'); });`                            |
+| `focusout` | Similar to `blur`, but bubbles up through the DOM tree.            | `$("form").focusout(function() { $(this).removeClass('focus'); });`                        |
+
+### Document/Window Events
+
+These are events that apply to the window or document as a whole.
+
+| Document/Window Event | Description                                                                                                             | Example Usage                                                          |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `load`                | Triggered when the entire page, including all dependent resources (like images), is fully loaded.                       | `$(window).on('load', function() { alert('Page fully loaded!'); });`   |
+| `resize`              | Triggered when the browser window is resized.                                                                           | `$(window).resize(function() { alert('Window resized!'); });`          |
+| `scroll`              | Triggered when the document or an element is scrolled.                                                                  | `$(window).scroll(function() { alert('Window scrolled!'); });`         |
+| `unload`              | Triggered when the page is unloaded. (Note: Use of this event is not recommended; beforeunload should be used instead.) | `$(window).on('unload', function() { alert('Page is unloading!'); });` |
+| `ready`               | Triggered when the DOM is fully loaded and ready to be manipulated (not waiting for images or other resources).         | `$(document).ready(function() { alert('DOM is ready!'); });`           |
